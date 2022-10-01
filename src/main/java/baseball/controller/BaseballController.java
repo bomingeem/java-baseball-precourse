@@ -51,6 +51,7 @@ public class BaseballController {
     private void restartGame() {
         InputView.printRestartGame();
         String restartGameValue = commonService.getReadLine();
+        baseballService.validateRestartGameNumber(restartGameValue);
         boolean isStart = restartGameValue.equals(Constant.RESTART_GAME);
         if (isStart) {
             this.initGame();

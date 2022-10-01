@@ -20,6 +20,13 @@ public class BaseballServiceImpl implements BaseballService {
         validateValueLength(number);
     }
 
+    @Override
+    public void validateRestartGameNumber(String number) {
+        if (!number.equals(Constant.RESTART_GAME) || number.equals(Constant.END_GAME)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     private int countBall(String userNumber, String computerNumber) {
         int count = 0;
         for (int i=0; i<userNumber.length(); i++) {
