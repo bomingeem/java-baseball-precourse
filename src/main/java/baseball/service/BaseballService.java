@@ -1,5 +1,7 @@
 package baseball.service;
 
+import baseball.domain.Baseball;
+
 public interface BaseballService {
-    void startBaseball();
+    Baseball resultBaseball(String userNumber, String computerNumber);
 }
