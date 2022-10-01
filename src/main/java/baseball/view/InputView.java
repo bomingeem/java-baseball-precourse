@@ -1,11 +1,13 @@
 package baseball.view;
 
+import baseball.constant.Constant;
+
 public class InputView {
     public static void printInputNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(Constant.INPUT_MESSAGE);
     }
 
     public static void printRestartGame() {
-        System.out.print("게임을 새로 새직하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.print(Constant.RESTART_MESSAGE);
     }
 }

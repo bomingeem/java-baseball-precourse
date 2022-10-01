@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.constant.Constant;
+
 public class BaseballResultMessage {
     private StringBuilder stringBuilder;
 
@@ -18,26 +20,26 @@ public class BaseballResultMessage {
     private void getBallMessage(Baseball baseball) {
         if (baseball.getBallCount() > 0) {
             stringBuilder.append(baseball.getBallCount());
-            stringBuilder.append("볼");
+            stringBuilder.append(Constant.BALL);
         }
     }
 
     private void getStrikeMessage(Baseball baseball) {
         if (baseball.getStrikeCount() > 0) {
             stringBuilder.append(baseball.getStrikeCount());
-            stringBuilder.append("스트라이크");
+            stringBuilder.append(Constant.STRIKE);
         }
     }
 
     private void getNothingMessage(Baseball baseball) {
         if (baseball.isNothing()) {
-            stringBuilder.append("낫싱");
+            stringBuilder.append(Constant.NOTHING);
         }
     }
 
     private void getSpaceMessage(Baseball baseball) {
         if (baseball.getBallCount() > 0 && baseball.getStrikeCount() > 0) {
-            stringBuilder.append(" ");
+            stringBuilder.append(Constant.SPACE);
         }
 
     }

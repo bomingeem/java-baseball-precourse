@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.constant.Constant;
 import baseball.domain.Baseball;
 
 public class BaseballServiceImpl implements BaseballService {
@@ -54,13 +55,13 @@ public class BaseballServiceImpl implements BaseballService {
     }
 
     private void validateZeroValue(String str) {
-        if (str.contains("0")) {
+        if (str.contains(Constant.ZERO_VALUE)) {
             throw new IllegalArgumentException();
         }
     }
 
     private void validateValueLength(String str) {
-        if (str.length() != 3) {
+        if (str.length() != Constant.NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }

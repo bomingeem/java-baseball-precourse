@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.config.AppConfig;
+import baseball.constant.Constant;
 import baseball.domain.Baseball;
 import baseball.domain.BaseballResultMessage;
 import baseball.service.BaseballService;
@@ -27,6 +28,7 @@ public class BaseballController {
         while (!baseball.isSuccess()) {
             InputView.printInputNumber();
             String userNumber = commonService.getReadLine();
+            baseballService.validateGameNumber(userNumber);
             baseball = baseballService.resultBaseball(userNumber, computerNumber);
             BaseballResultMessage baseballResultMessage = new BaseballResultMessage(baseball);
             OutputView.printResultGame(baseballResultMessage.resultGameMessage());
@@ -43,13 +45,13 @@ public class BaseballController {
 
     private void initGame() {
         baseball = Baseball.initBaseball();
-        computerNumber = commonService.getBaseballRandomNumber(3);
+        computerNumber = commonService.getBaseballRandomNumber(Constant.NUMBER_LENGTH);
     }
 
     private void restartGame() {
         InputView.printRestartGame();
         String restartGameValue = commonService.getReadLine();
-        boolean isStart = restartGameValue.equals("1");
+        boolean isStart = restartGameValue.equals(Constant.RESTART_GAME);
         if (isStart) {
             this.initGame();
         }
