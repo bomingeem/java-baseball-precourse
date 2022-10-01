@@ -6,6 +6,7 @@ public class BaseballResultMessage {
     public BaseballResultMessage(Baseball baseball) {
         stringBuilder = new StringBuilder();
         getBallMessage(baseball);
+        getSpaceMessage(baseball);
         getStrikeMessage(baseball);
         getNothingMessage(baseball);
     }
@@ -17,7 +18,7 @@ public class BaseballResultMessage {
     private void getBallMessage(Baseball baseball) {
         if (baseball.getBallCount() > 0) {
             stringBuilder.append(baseball.getBallCount());
-            stringBuilder.append("볼 ");
+            stringBuilder.append("볼");
         }
     }
 
@@ -32,5 +33,12 @@ public class BaseballResultMessage {
         if (baseball.isNothing()) {
             stringBuilder.append("낫싱");
         }
+    }
+
+    private void getSpaceMessage(Baseball baseball) {
+        if (baseball.getBallCount() > 0 && baseball.getStrikeCount() > 0) {
+            stringBuilder.append(" ");
+        }
+
     }
 }
