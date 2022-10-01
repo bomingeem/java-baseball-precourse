@@ -11,6 +11,14 @@ public class BaseballServiceImpl implements BaseballService {
         return Baseball.saveBaseball(resultCountBall, resultStrikeBall);
     }
 
+    @Override
+    public void validateGameNumber(String number) {
+        validateEmptyValue(number);
+        validateNumberValue(number);
+        validateZeroValue(number);
+        validateValueLength(number);
+    }
+
     private int countBall(String userNumber, String computerNumber) {
         int count = 0;
         for (int i=0; i<userNumber.length(); i++) {
@@ -29,5 +37,36 @@ public class BaseballServiceImpl implements BaseballService {
             }
         }
         return count;
+    }
+
+    private void validateEmptyValue(String str) {
+        if (isEmpty(str)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateNumberValue(String str) {
+        try {
+            Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateZeroValue(String str) {
+        if (str.contains("0")) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateValueLength(String str) {
+        if (str.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+
+    private boolean isEmpty(String str) {
+        return str == null || str.equals("");
     }
 }
